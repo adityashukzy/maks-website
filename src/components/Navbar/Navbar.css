@@ -1,0 +1,25 @@
+
+.Navbar{
+    width: 100%;
+    height: auto;
+    background-color: black;
+    color: white;
+    box-sizing: border-box;
+    display: inline-grid;
+    grid-template-columns:86% 7% 7%;
+    align-items: center;
+    display: fixed;
+    margin:0;
+}
+.logo{
+    text-align: left;
+    padding-left: 5px;
+    font-size: 1rem;
+}
+h1{
+    display: inline;
+    cursor: pointer;
+}
+li{
+    list-style-type: none;
+}
