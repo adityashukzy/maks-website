@@ -1,30 +1,30 @@
-import React,{useEffect,useState} from "react";
-import styles from './new.module.scss'
+import React, { useEffect, useState } from "react";
+import styles from "./new.module.scss";
 import axios from "axios";
-import Navbar from '../components/Navbar/Navbar'
+import Navbar from "../components/Navbar/Navbar";
 import { Helmet } from "react-helmet";
 
 const Landing = () => {
-    const [data, setData] = useState(null)
-    useEffect(() => {
-        setData(null)
-        let email=localStorage.getItem('email')
-        axios
-          .post("http://localhost:5000/page", {
-            email,
-          })
-          .then(function (response) {
-            if (response.status === 200) {
-                setData(response.data.violator);
-            } else if (response.status === 400) {
-              alert("Error?");
-            }
-          });
-    },[])
+  const [data, setData] = useState<[] | null>(null);
+  useEffect(() => {
+    setData(null);
+    let email = localStorage.getItem("email");
+    axios
+      .post("http://localhost:5000/page", {
+        email,
+      })
+      .then(function (response) {
+        if (response.status === 200) {
+          setData(response.data.violator);
+        } else if (response.status === 400) {
+          alert("Error?");
+        }
+      });
+  }, []);
   return (
     <>
       <Helmet>
-        <meta charset="utf-8" />
+        <meta charSet="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link
           rel="icon"
@@ -36,7 +36,7 @@ const Landing = () => {
       <Navbar pathname="/admin" />
       <div
         className={`${styles.container} ${styles.center} ${styles.root}`}
-        styles={{ backgroundColor: "white" }}
+        style={{ backgroundColor: "white" }}
       >
         {data &&
           data.map((i) => {

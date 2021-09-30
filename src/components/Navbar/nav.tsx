@@ -1,6 +1,6 @@
 import React from 'react';
 import {NavLink} from 'react-router-dom';
-export const nav = (props) => {
+export const nav = (props:any) => {
     const clickHandler=()=>{
         localStorage.removeItem('email')
     }
