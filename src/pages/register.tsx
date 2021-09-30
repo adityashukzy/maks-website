@@ -1,40 +1,31 @@
 import React, { useRef } from "react";
 import "./common.css";
 import axios from "axios";
-import { Link,useHistory } from "react-router-dom";
+import { Link } from "react-router-dom";
 import Navbar from "../components/Navbar/Navbar";
 import { Helmet } from "react-helmet";
 
-const Login = () => {
-  const history = useHistory();
-  const emailInput = useRef(null);
-  const passwordInput = useRef(null);
-  const onClickHandler = (e) => {
+const Register = () => {
+  const emailInput = useRef() as React.MutableRefObject<HTMLInputElement>;
+  const passwordInput = useRef() as React.MutableRefObject<HTMLInputElement>;
+  const onClickHandler = (e: React.MouseEvent<HTMLButtonElement>) => {
     e.preventDefault();
-    let email=emailInput.current.value
-    axios
-      .post("http://localhost:5000/users/login", {
-        email,
-        password: passwordInput.current.value,
-      })
-      .then(function (response) {
-        if(response.status===200){
-          localStorage.setItem("email",email)
-          history.push("/admin");
-        }
-        else if (response.status === 400) {
-          alert("Login failed");
-        }
-      });
-
+    axios.post("http://localhost:5000/users/register", {
+      email: emailInput.current.value,
+      password: passwordInput.current.value,
+    });
   };
   return (
     <>
       <Helmet>
-        <meta charset="utf-8"/>
-        <meta name="viewport" content="width=device-width, initial-scale=1"/>
-	      <link rel="icon" href="https://maks-images-aws-bucket.s3.ap-south-1.amazonaws.com/maks-logo.png" type="image/icon"/>
-        <title>Login | Maks ~ safety, simplified.</title>
+        <meta charSet="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <link
+          rel="icon"
+          href="https://maks-images-aws-bucket.s3.ap-south-1.amazonaws.com/maks-logo.png"
+          type="image/icon"
+        />
+        <title>Register | Maks ~ safety, simplified.</title>
       </Helmet>
       <Navbar />
       <div className="session">
@@ -45,11 +36,14 @@ const Login = () => {
             alt="icon"
           />
         </div>
-        <form action="" className="log-in" autoComplete="on">
+        <form>
           <h4>
             Welcome to <span>MAKS</span>
           </h4>
-          <p>Log in to your account to view your venue's violators!</p>
+          <p>
+            Create a new account to start using Maks and ensuring the safety of
+            your venues!
+          </p>
           <div className="floating-label">
             <input
               placeholder="Email"
@@ -102,11 +96,11 @@ const Login = () => {
               </svg>
             </div>
           </div>
-          <button type="submit" onClick={onClickHandler}>
-            Log in
+          <button id="register-btn" type="submit" onClick={onClickHandler}>
+            Register
           </button>
-          <Link className="a" to="/register">
-            Register for an account
+          <Link className="a" to="/login">
+            Login to your account
           </Link>
         </form>
       </div>
@@ -114,4 +108,4 @@ const Login = () => {
   );
 };
 
-export default Login;
+export default Register;
