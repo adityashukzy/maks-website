@@ -22,7 +22,7 @@ npm run dev
 
 ## The Login Process
 
-- Go to [Maks's wiki](https://github.com/adityashukzy/Maks/wiki/The-Login-Process)
+- Go to [Maks's wiki](https://github.com/adityashukzy/Maks/wiki/The-Login-Process#registering-for-an-account)
 
 ## License
 
